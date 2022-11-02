@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="text-center">TO Do List</h1>
+  <h1 class="text-center">{{ title }}</h1>
   <form class="row g-3">
     <div class="col-auto">
       <input
@@ -13,11 +13,16 @@
       <button type="button" class="btn btn-primary mb-3">Add</button>
     </div>
   </form>
-  <ul class="list-group">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
-    <li class="list-group-item">A fourth item</li>
-    <li class="list-group-item">And a fifth one</li>
+  <ul class="list-group" *ngFor="let note of notes">
+    <li class="list-group-item">
+      {{ note.id }} {{ note.name }}
+      <button
+        type="button"
+        class="btn btn-danger btn-sm"
+        (click)="removeNote(note)"
+      >
+        X
+      </button>
+    </li>
   </ul>
 </div>
